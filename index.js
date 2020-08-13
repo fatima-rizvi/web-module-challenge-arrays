@@ -44,7 +44,7 @@ i.e. is31Flavors(originalFlavors) will return TRUE.*/
 
 function is31Flavors(array){
     let numberOfFlavors = 0;
-    let length31 = false;
+    let length31;
     numberOfFlavors = array.length;
     if (numberOfFlavors === 31) {
         length31 = true;
@@ -105,7 +105,7 @@ function getFlavorByIndex(array, position){
     console.log(array[position]);
 }
 
-console.log(getFlavorByIndex(originalFlavors,2));
+getFlavorByIndex(originalFlavors,2);
 
 /* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
 
@@ -126,7 +126,7 @@ function removeFlavorByName(array, flavor) {
     return array;
 }
 
-console.log(removeFlavorByName(originalFlavors,"Vanilla"));
+//console.log(removeFlavorByName(originalFlavors,"Vanilla"));
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
 
@@ -183,12 +183,21 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/){
-
-    /*code here*/
-
+function getAverageWordLength(arr){
+    let totalWordCount = 0;
+    let arrayLength;
+    let wordCount;
+    arrayLength = arr.length;
+    for (let i = 0; i < arr.length; i++){
+        let indivWords = arr[i].split(" ");
+        wordCount = indivWords.length;
+        totalWordCount = totalWordCount + wordCount; 
+    }
+    let avgNumOfWords = totalWordCount / arrayLength;
+    return avgNumOfWords;
 }
 
+console.log(getAverageWordLength(originalFlavors));
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
 
